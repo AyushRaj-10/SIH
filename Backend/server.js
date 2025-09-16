@@ -10,14 +10,21 @@ dotenv.config();
 
 const app = express();
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "https://sih-sigma-dun.vercel.app" 
+];
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
   origin: (origin, callback) => {
-    const allowedOrigins = ["http://localhost:5173", "http://localhost:5174" , "https://sih-sigma-dun.vercel.app/"];
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
+      console.log(`🚫 CORS blocked request from: ${origin}`); // helpful for debugging
       callback(new Error("Not allowed by CORS"));
     }
   },
