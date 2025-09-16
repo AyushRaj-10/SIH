@@ -13,7 +13,7 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:5174",
-  "https://sih-sigma-dun.vercel.app/api" 
+  "https://sih-sigma-dun.vercel.app" 
 ];
 
 
